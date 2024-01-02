@@ -1,7 +1,7 @@
-<mat-card>
+<mat-card class="example-card">
   <mat-card-title>Crear ciudad</mat-card-title>
 
-  <mat-card-content>
+  <mat-card-content class="contenedor-partes">
     <div [formGroup]="formCity">
       <div>
         <mat-form-field>
@@ -14,16 +14,33 @@
       </div>
     </div>
   </mat-card-content>
-  <mat-card-actions><button mat-stroked-button (click)="guardarNombreCiudad()">GUARDAR</button></mat-card-actions>
+  <mat-card-actions class="contenedor-partes"><button mat-stroked-button
+      (click)="guardarNombreCiudad()">GUARDAR</button></mat-card-actions>
 </mat-card>
 <hr>
-<mat-card>
+<mat-card class="example-card">
   <mat-card-title>Ciudades</mat-card-title>
-  <mat-card-content>
-    <div *ngFor="let ciudad of ciudades">
-      {{ ciudad.name }} - {{ciudad.zipCode}}
-    </div>
+  <mat-card-content class="contenedor-partes">
+    <table>
+      <tr>
+        <th>Nombre ciudad</th>
+        <th>Codigo Postal</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+      </tr>
+      <tr *ngFor="let ciudad of ciudades">
+        <td>
+          {{ ciudad.name }}
+        </td>
+        <td>{{ciudad.zipCode}}
+        </td>
+        <td> boton editar</td>
+        <td><mat-icon (click)="borrarCiudad(ciudad.$id)">cancel</mat-icon></td>
+      </tr>
+    </table>
   </mat-card-content>
-  <mat-card-actions><button mat-stroked-button (click)="cargarCiudades()">REFRESCAR</button></mat-card-actions>
+  <mat-card-actions class="contenedor-partes">
+    <button mat-stroked-button (click)="cargarCiudades()">REFRESCAR</button>
+  </mat-card-actions>
 
 </mat-card>

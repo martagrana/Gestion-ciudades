@@ -13,7 +13,7 @@ export class AppComponent {
 
   formCity: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    zipCode: new FormControl('', [Validators.required, Validators.maxLength(5)])
+    zipCode: new FormControl('', [Validators.required, Validators.maxLength(5), Validators.minLength(5)])
   });
 
   ciudades: City[] = [];
@@ -22,10 +22,6 @@ export class AppComponent {
 
   guardarNombreCiudad() {
     const city = this.formCity.value;
-    // let city: City = {
-    //   name: this.nombreCiudad,
-    //   zipCode: this.codigoPostal
-    // }
     this.cityService.create(city).subscribe(() => {
       console.log("Datos guardados")
     });
@@ -36,6 +32,34 @@ export class AppComponent {
       console.log('Ciudades que vienen desde el servidor', cities)
       this.ciudades = cities;
     })
-
   }
+
+  borrarCiudad(id: string) {
+
+    this.cityService.delete(id).subscribe(() => {
+      console.log("ciudad borrada")
+      this.cargarCiudades();
+    });
+  }
+
+  /* mostrarFormularioEdicion: boolean = false;
+ 
+   cargarDatosEdicion(ciudad: City) {
+     this.mostrarFormularioEdicion = true;
+     this.formEdit.setValue({
+       id: ciudad.id,
+       name: ciudad.name,
+       zipCode: ciudad.zipCode
+     });
+   }
+ 
+   guardarEdicion() {
+     const editedCity = this.formEdit.value;
+     this.cityService.update(editedCity).subscribe(() => {
+       console.log('Ciudad actualizada');
+       this.mostrarFormularioEdicion = false;
+       this.cargarCiudades();
+     });
+   }*/
+
 }
