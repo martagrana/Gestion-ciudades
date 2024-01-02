@@ -15,7 +15,7 @@
     </div>
   </mat-card-content>
   <mat-card-actions class="contenedor-partes"><button mat-stroked-button
-      (click)="guardarNombreCiudad()">GUARDAR</button></mat-card-actions>
+      (click)="guardarCiudad()">GUARDAR</button></mat-card-actions>
 </mat-card>
 <hr>
 <mat-card class="example-card">
@@ -34,7 +34,9 @@
         </td>
         <td>{{ciudad.zipCode}}
         </td>
-        <td> boton editar</td>
+        <td> <mat-card-actions class="contenedor-partes">
+            <button mat-stroked-button (click)="editarCiudad(ciudad)">Editar</button>
+          </mat-card-actions></td>
         <td><mat-icon (click)="borrarCiudad(ciudad.$id)">cancel</mat-icon></td>
       </tr>
     </table>

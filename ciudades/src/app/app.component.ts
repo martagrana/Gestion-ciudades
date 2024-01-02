@@ -17,49 +17,37 @@ export class AppComponent {
   });
 
   ciudades: City[] = [];
+  ciudadSeleccionada: City | null = null;
 
   constructor(private cityService: CityService) { }
 
-  guardarNombreCiudad() {
+  guardarCiudad() {
     const city = this.formCity.value;
     this.cityService.create(city).subscribe(() => {
-      console.log("Datos guardados")
+      console.log("Datos guardados");
     });
   }
 
   cargarCiudades() {
     this.cityService.query().subscribe((cities: City[]) => {
-      console.log('Ciudades que vienen desde el servidor', cities)
+      console.log('Ciudades que vienen desde el servidor', cities);
       this.ciudades = cities;
     })
   }
 
   borrarCiudad(id: string) {
-
     this.cityService.delete(id).subscribe(() => {
-      console.log("ciudad borrada")
+      console.log("ciudad borrada");
       this.cargarCiudades();
     });
   }
 
-  /* mostrarFormularioEdicion: boolean = false;
- 
-   cargarDatosEdicion(ciudad: City) {
-     this.mostrarFormularioEdicion = true;
-     this.formEdit.setValue({
-       id: ciudad.id,
-       name: ciudad.name,
-       zipCode: ciudad.zipCode
-     });
-   }
- 
-   guardarEdicion() {
-     const editedCity = this.formEdit.value;
-     this.cityService.update(editedCity).subscribe(() => {
-       console.log('Ciudad actualizada');
-       this.mostrarFormularioEdicion = false;
-       this.cargarCiudades();
-     });
-   }*/
+  editarCiudad(ciudad: City) {
+    this.ciudadSeleccionada = ciudad;
+    this.formCity.patchValue({
+      name: ciudad.name,
+      zipCode: ciudad.zipCode
+    });
+  }
 
 }

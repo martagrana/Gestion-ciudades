@@ -18,11 +18,21 @@ export class CityService {
     return this.httpClient.get<City[]>('https://capi-papi.azurewebsites.net/userapis/martatech/cities');
   }
 
-  /* update(city: City): Observable<City> {
-     return this.httpClient.put<City>('https://capi-papi.azurewebsites.net/userapis/martatech/cities', city);
-   }*/
+  update(id: string, city: City): Observable<City> {
+    return this.httpClient.put<City>(`https://capi-papi.azurewebsites.net/userapis/martatech/cities/${id}`, city);
+  }
 
   delete(id: string): Observable<City> {
     return this.httpClient.delete<City>(`https://capi-papi.azurewebsites.net/userapis/martatech/cities/${id}`);
+
   }
+
+  saveOrUpdate(id: string, city: City): Observable<City> {
+    if (city.$id) {
+      return this.update(id, city);
+    } else {
+      return this.create(city);
+    }
+  }
+
 }
