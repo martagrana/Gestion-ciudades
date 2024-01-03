@@ -25,16 +25,21 @@ export class AppComponent {
   guardarOActualizarCiudad() {
     const city = this.formCity.value;
     const id = this.ciudadSeleccionada ? this.ciudadSeleccionada.$id : null;
-
     if (id) {
       // Si id existe y no es null o undefined, es una actualización
       this.cityService.update(id, city).subscribe(() => {
         console.log("Datos editados");
+        this.cargarCiudades();
+        this.formCity.reset();
+        this.ciudadSeleccionada = null;
       });
+
     } else {
       // Si id es null o undefined, es una creación
       this.cityService.create(city).subscribe(() => {
         console.log("Datos guardados");
+        this.cargarCiudades();
+        this.formCity.reset();
       });
     }
   }
