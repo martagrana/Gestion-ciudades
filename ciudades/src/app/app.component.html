@@ -21,7 +21,7 @@
 <mat-card class="example-card">
   <mat-card-title>Ciudades</mat-card-title>
   <mat-card-content class="contenedor-partes">
-    <table>
+    <table *ngIf="ciudades.length!=0">
       <tr>
         <th>Nombre ciudad</th>
         <th>Codigo Postal</th>
@@ -40,6 +40,7 @@
         <td><mat-icon (click)="borrarCiudad(ciudad.$id)">cancel</mat-icon></td>
       </tr>
     </table>
+    <div *ngIf="ciudades.length==0">No hay ciudades disponibles en el listado</div>
   </mat-card-content>
   <mat-card-actions class="contenedor-partes">
     <button mat-stroked-button (click)="cargarCiudades()">REFRESCAR</button>
