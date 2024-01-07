@@ -50,6 +50,15 @@ export class AppComponent {
       this.ciudades = cities;
     })
   }
+  /* método para confirmar eliminar los registros según el id de la ciudad */
+  confirmarBorrarCiudad(id: string) {
+    let confirmacion = confirm("¿Deseas eliminar esta ciudad?");
+    if (confirmacion) {
+      // Si el usuario hace clic en "Aceptar", procede con el borrado
+      this.borrarCiudad(id);
+    }
+  }
+
   /* método para eliminar los registros según el id de la ciudad */
   borrarCiudad(id: string) {
     this.cityService.delete(id).subscribe(() => {

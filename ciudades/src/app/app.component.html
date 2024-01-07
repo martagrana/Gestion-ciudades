@@ -37,7 +37,7 @@
         <td> <mat-card-actions class="contenedor-partes">
             <button mat-stroked-button (click)="editarCiudad(ciudad)">Editar</button>
           </mat-card-actions></td>
-        <td><mat-icon (click)="borrarCiudad(ciudad.$id)">cancel</mat-icon></td>
+        <td><mat-icon (click)="confirmarBorrarCiudad(ciudad.$id)">cancel</mat-icon></td>
       </tr>
     </table>
     <div *ngIf="ciudades.length==0">No hay ciudades disponibles en el listado</div>
