@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { City } from 'src/model/city.model';
 import { CityService } from 'src/services/city.service';
+import { DialogoBorradoComponent } from './dialogo-borrado/dialogo-borrado.component';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +21,7 @@ export class AppComponent {
   ciudades: City[] = [];
   ciudadSeleccionada: City | null = null;
 
-  constructor(private cityService: CityService) { }
+  constructor(private cityService: CityService, public dialogService: MatDialog) { }
 
   /* método para guardar los registros de las ciudades */
   guardarOActualizarCiudad() {
@@ -43,7 +45,9 @@ export class AppComponent {
       });
     }
   }
-  /* método para listar todos los registros de ciudades */
+  /** 
+   * método para listar todos los registros de ciudades
+    */
   cargarCiudades() {
     this.cityService.query().subscribe((cities: City[]) => {
       console.log('Ciudades que vienen desde el servidor', cities);
@@ -52,11 +56,14 @@ export class AppComponent {
   }
   /* método para confirmar eliminar los registros según el id de la ciudad */
   confirmarBorrarCiudad(id: string) {
-    let confirmacion = confirm("¿Deseas eliminar esta ciudad?");
-    if (confirmacion) {
-      // Si el usuario hace clic en "Aceptar", procede con el borrado
-      this.borrarCiudad(id);
-    }
+    const dialogRef = this.dialogService.open(DialogoBorradoComponent);
+    dialogRef.afterClosed().subscribe(resultado => {
+      console.log(resultado);
+      if (resultado) {
+        this.borrarCiudad(id);
+      }
+    })
+
   }
 
   /* método para eliminar los registros según el id de la ciudad */

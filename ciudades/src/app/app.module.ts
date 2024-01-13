@@ -11,10 +11,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DialogoBorradoComponent } from './dialogo-borrado/dialogo-borrado.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DialogoBorradoComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule, MatCardModule, MatDialogModule, MatButtonModule, MatIconModule, MatDividerModule, MatInputModule, MatFormFieldModule, BrowserAnimationsModule
