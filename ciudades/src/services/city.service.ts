@@ -28,4 +28,13 @@ export class CityService {
 
   }
 
+  /**
+   * Obtiene una ciudad utilizando su identificador
+   * @param id identificador de la ciudad que quiero cargar desde el servidor
+   * @returns la ciudad si existe
+   */
+  get(id: string): Observable<City> {
+    return this.httpClient.get<City>(`https://capi-papi.azurewebsites.net/userapis/martatech/cities/${id}`);
+  }
+
 }
