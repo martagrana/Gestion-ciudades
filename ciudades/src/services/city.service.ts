@@ -7,24 +7,24 @@ import { City } from 'src/model/city.model';
   providedIn: 'root'
 })
 export class CityService {
-
+  readonly url: string = 'https://capi-papi.azurewebsites.net/userapis/martatech/cities';
   constructor(private httpClient: HttpClient) { }
 
   /* método para guardar los registros de las ciudades */
   create(city: City): Observable<City> {
-    return this.httpClient.post<City>('https://capi-papi.azurewebsites.net/userapis/martatech/cities', city);
+    return this.httpClient.post<City>(this.url, city);
   }
   /* método para listar todos los registros de ciudades */
   query(): Observable<City[]> {
-    return this.httpClient.get<City[]>('https://capi-papi.azurewebsites.net/userapis/martatech/cities');
+    return this.httpClient.get<City[]>(this.url);
   }
   /* método para actualizar los registros según el id de la ciudad */
   update(id: string, city: City): Observable<City> {
-    return this.httpClient.put<City>(`https://capi-papi.azurewebsites.net/userapis/martatech/cities/${id}`, city);
+    return this.httpClient.put<City>(`${this.url}/${id}`, city);
   }
   /* método para eliminar los registros según el id de la ciudad */
   delete(id: string): Observable<City> {
-    return this.httpClient.delete<City>(`https://capi-papi.azurewebsites.net/userapis/martatech/cities/${id}`);
+    return this.httpClient.delete<City>(`${this.url}/${id}`);
 
   }
 
