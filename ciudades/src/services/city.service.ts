@@ -7,7 +7,7 @@ import { City } from 'src/model/city.model';
   providedIn: 'root'
 })
 export class CityService {
-  url: string = 'https://capi-papi.azurewebsites.net/userapis/martatech/cities';
+  readonly url: string = 'https://capi-papi.azurewebsites.net/userapis/martatech/cities';
   constructor(private httpClient: HttpClient) { }
 
   /* método para guardar los registros de las ciudades */
