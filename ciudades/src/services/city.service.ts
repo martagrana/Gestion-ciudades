@@ -34,7 +34,7 @@ export class CityService {
    * @returns la ciudad si existe
    */
   get(id: string): Observable<City> {
-    return this.httpClient.get<City>(`https://capi-papi.azurewebsites.net/userapis/martatech/cities/${id}`);
+    return this.httpClient.get<City>(`${this.url}/${id}`);
   }
 
 }
