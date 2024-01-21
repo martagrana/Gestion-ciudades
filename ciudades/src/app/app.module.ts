@@ -12,13 +12,31 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogoBorradoComponent } from './dialogo-borrado/dialogo-borrado.component';
+import { ListadoCiudadesComponent } from './listado-ciudades/listado-ciudades.component';
+import { EdicionCiudadComponent } from './edicion-ciudad/edicion-ciudad.component';
+import { RouterModule } from '@angular/router';
+
+
+// Configuracion de las rutas disponibles en la aplicacion
+const routes = [{
+  path:'',
+  component: ListadoCiudadesComponent
+},{
+  path:':id',
+  component: EdicionCiudadComponent
+}]
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    DialogoBorradoComponent
+    DialogoBorradoComponent,
+    ListadoCiudadesComponent,
+    EdicionCiudadComponent
   ],
   imports: [
+    RouterModule.forRoot(routes), // Configuration del Router
     BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule, MatCardModule, MatDialogModule, MatButtonModule, MatIconModule, MatDividerModule, MatInputModule, MatFormFieldModule, BrowserAnimationsModule
   ],
   providers: [],
