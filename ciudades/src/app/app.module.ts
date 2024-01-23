@@ -16,19 +16,26 @@ import { ListadoCiudadesComponent } from './listado-ciudades/listado-ciudades.co
 import { EdicionCiudadComponent } from './edicion-ciudad/edicion-ciudad.component';
 import { RouterModule } from '@angular/router';
 import { ListadoProvinciasComponent } from './listado-provincias/listado-provincias.component';
+import { DialogoBorradoProvinciasComponent } from './dialogo-borrado-provincias/dialogo-borrado-provincias.component';
+import { EdicionProvinciasComponent } from './edicion-provincias/edicion-provincias.component';
 
 
 // Configuracion de las rutas disponibles en la aplicacion
-const routes = [{
-  path: '',
-  component: ListadoCiudadesComponent
-}, {
-  path: ':id',
-  component: EdicionCiudadComponent
-}, {
-  path: 'p',
-  component: ListadoProvinciasComponent
-}
+const routes = [
+  {
+    path: 'p',
+    component: ListadoProvinciasComponent
+  }, {
+    path: ':idProvince',
+    component: EdicionProvinciasComponent
+  },
+  {
+    path: '',
+    component: ListadoCiudadesComponent
+  }, {
+    path: ':id',
+    component: EdicionCiudadComponent
+  },
 ]
 
 
@@ -39,7 +46,9 @@ const routes = [{
     DialogoBorradoComponent,
     ListadoCiudadesComponent,
     EdicionCiudadComponent,
-    ListadoProvinciasComponent
+    ListadoProvinciasComponent,
+    DialogoBorradoProvinciasComponent,
+    EdicionProvinciasComponent
   ],
   imports: [
     RouterModule.forRoot(routes), // Configuration del Router

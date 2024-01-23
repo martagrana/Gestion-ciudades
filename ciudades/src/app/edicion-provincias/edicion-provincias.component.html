@@ -1,0 +1,16 @@
+<mat-card class="example-card">
+    <mat-card-title>Crear provincia</mat-card-title>
+
+    <mat-card-content class="contenedor-partes">
+        <div [formGroup]="formProvince">
+            <div>
+                <mat-form-field>
+                    <mat-label>Nombre</mat-label><input matInput placeholder="provincia" formControlName="name">
+                </mat-form-field>
+            </div>
+
+        </div>
+    </mat-card-content>
+    <mat-card-actions class="contenedor-partes"><button mat-stroked-button
+            (click)="guardarOActualizarProvincia()">GUARDAR</button></mat-card-actions>
+</mat-card>
