@@ -36,14 +36,14 @@ export class EdicionProvinciasComponent implements OnInit {
       // Si id existe y no es null o undefined, es una actualización
       this.provinceService.update(id, province).subscribe(() => {
         console.log("Datos editados");
-        this.router.navigate(['p']);
+        this.router.navigate(['provinces']);
       });
 
     } else {
       // Si id es null o undefined, es una creación
       this.provinceService.create(province).subscribe(() => {
         console.log("Datos guardados");
-        this.router.navigate(['p']);
+        this.router.navigate(['provinces']);
       });
     }
   }

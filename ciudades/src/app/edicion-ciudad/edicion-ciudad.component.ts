@@ -11,16 +11,16 @@ import { CityService } from 'src/services/city.service';
 })
 export class EdicionCiudadComponent implements OnInit {
   ciudadSeleccionada: City | null = null;
-  
+
   formCity: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     zipCode: new FormControl('', [Validators.required, Validators.maxLength(5), Validators.minLength(5)])
   });
-  
+
   constructor(private cityService: CityService, private activatedRoute: ActivatedRoute, private router: Router) { }
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params['id'];
-    this.cityService.get(id).subscribe(({value}) => {
+    this.cityService.get(id).subscribe(({ value }) => {
       this.ciudadSeleccionada = value;
       this.formCity.patchValue(value)
     })
@@ -35,14 +35,14 @@ export class EdicionCiudadComponent implements OnInit {
       // Si id existe y no es null o undefined, es una actualización
       this.cityService.update(id, city).subscribe(() => {
         console.log("Datos editados");
-        this.router.navigate(['']);
+        this.router.navigate(['cities']);
       });
 
     } else {
       // Si id es null o undefined, es una creación
       this.cityService.create(city).subscribe(() => {
         console.log("Datos guardados");
-        this.router.navigate(['']);
+        this.router.navigate(['cities']);
       });
     }
   }

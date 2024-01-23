@@ -14,28 +14,31 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DialogoBorradoComponent } from './dialogo-borrado/dialogo-borrado.component';
 import { ListadoCiudadesComponent } from './listado-ciudades/listado-ciudades.component';
 import { EdicionCiudadComponent } from './edicion-ciudad/edicion-ciudad.component';
-import { RouterModule } from '@angular/router';
+import { Route, RouterModule } from '@angular/router';
 import { ListadoProvinciasComponent } from './listado-provincias/listado-provincias.component';
 import { DialogoBorradoProvinciasComponent } from './dialogo-borrado-provincias/dialogo-borrado-provincias.component';
 import { EdicionProvinciasComponent } from './edicion-provincias/edicion-provincias.component';
 
 
 // Configuracion de las rutas disponibles en la aplicacion
-const routes = [
+const routes: Route[] = [
   {
-    path: 'p',
+    path: 'provinces',
     component: ListadoProvinciasComponent
   }, {
-    path: ':idProvince',
+    path: 'provinces/:idProvince',
     component: EdicionProvinciasComponent
   },
   {
-    path: '',
+    path: 'cities',
     component: ListadoCiudadesComponent
   }, {
-    path: ':id',
+    path: 'cities/:id',
     component: EdicionCiudadComponent
-  },
+  }, {
+    path: '',
+    redirectTo: '/provinces', pathMatch: 'full'
+  }
 ]
 
 
