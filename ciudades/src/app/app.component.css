@@ -21,10 +21,11 @@ table {
     width: 100%;
 }
 
-boton {
+.boton {
     text-align: center;
     justify-content: center;
-    margin-bottom: 8px;
+
+    margin-top: 8px;
     padding: 15px;
 
 }
