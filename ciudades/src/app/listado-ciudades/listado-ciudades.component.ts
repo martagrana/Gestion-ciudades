@@ -11,6 +11,8 @@ import { DialogoBorradoComponent } from '../dialogo-borrado/dialogo-borrado.comp
 })
 export class ListadoCiudadesComponent implements OnInit {
   ciudades: City[] = [];
+  router: any;
+  formCity: any;
 
   constructor(private cityService: CityService, public dialogService: MatDialog) { }
   ngOnInit(): void {
@@ -26,16 +28,29 @@ export class ListadoCiudadesComponent implements OnInit {
       this.ciudades = cities;
     })
   }
+  /**
+   * metodo para guardar una nueva ciudad
+   * 
+   */
+  crearCiudad() {
 
-    /* método para eliminar los registros según el id de la ciudad */
-    borrarCiudad(id: string) {
-      this.cityService.delete(id).subscribe(() => {
-        console.log("ciudad borrada");
-        this.cargarCiudades();
-      });
-    }
-    
-  /* método para confirmar eliminar los registros según el id de la ciudad */
+  }
+
+  /** 
+   *  método para eliminar los registros según el id de la ciudad
+   * @param id identificador de la ciudad que se desea eliminar */
+
+  borrarCiudad(id: string) {
+    this.cityService.delete(id).subscribe(() => {
+      console.log("ciudad borrada");
+      this.cargarCiudades();
+    });
+  }
+
+  /** 
+   * método para confirmar eliminar los registros según el id de la ciudad 
+   * @param id identificador de la ciudad que se desea eliminar*/
+
   confirmarBorrarCiudad(id: string) {
     const dialogRef = this.dialogService.open(DialogoBorradoComponent);
     dialogRef.afterClosed().subscribe(resultado => {

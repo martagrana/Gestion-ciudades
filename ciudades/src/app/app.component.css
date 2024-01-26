@@ -20,3 +20,11 @@ tr:nth-child(even) {
 table {
     width: 100%;
 }
+
+boton {
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    padding: 15px;
+
+}

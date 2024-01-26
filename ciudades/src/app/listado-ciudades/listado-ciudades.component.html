@@ -1,29 +1,29 @@
 <mat-card class="example-card">
-    <mat-card-title>Ciudades</mat-card-title>
-    <mat-card-content class="contenedor-partes">
-      <table *ngIf="ciudades.length!=0">
-        <tr>
-          <th>Nombre ciudad</th>
-          <th>Codigo Postal</th>
-          <th>Editar</th>
-          <th>Eliminar</th>
-        </tr>
-        <tr *ngFor="let ciudad of ciudades">
-          <td>
-            {{ ciudad.name }}
-          </td>
-          <td>{{ciudad.zipCode}}
-          </td>
-          <td> <mat-card-actions class="contenedor-partes">
-              <button mat-stroked-button [routerLink]="[ciudad.$id]">Editar</button>
-            </mat-card-actions></td>
-          <td><mat-icon (click)="confirmarBorrarCiudad(ciudad.$id)">cancel</mat-icon></td>
-        </tr>
-      </table>
-      <div *ngIf="ciudades.length==0">No hay ciudades disponibles en el listado</div>
-    </mat-card-content>
-    <mat-card-actions class="contenedor-partes">
-      <button mat-stroked-button (click)="cargarCiudades()">REFRESCAR</button>
-    </mat-card-actions>
-  
-  </mat-card>
+  <mat-card-title>Ciudades</mat-card-title>
+  <mat-card-content class="contenedor-partes">
+    <table *ngIf="ciudades.length!=0">
+      <tr>
+        <th>Nombre ciudad</th>
+        <th>Codigo Postal</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+      </tr>
+      <tr *ngFor="let ciudad of ciudades">
+        <td>
+          {{ ciudad.name }}
+        </td>
+        <td>{{ciudad.zipCode}}
+        </td>
+        <td> <mat-card-actions class="contenedor-partes">
+            <button mat-stroked-button [routerLink]="[ciudad.$id]">Editar</button>
+          </mat-card-actions></td>
+        <td><mat-icon (click)="confirmarBorrarCiudad(ciudad.$id)">cancel</mat-icon></td>
+      </tr>
+    </table>
+    <div *ngIf="ciudades.length==0">No hay ciudades disponibles en el listado</div>
+  </mat-card-content>
+  <mat-card-actions class="contenedor-partes">
+    <button mat-stroked-button (click)="cargarCiudades()">REFRESCAR</button>
+  </mat-card-actions>
+
+</mat-card>
