@@ -33,6 +33,10 @@ const routes: Route[] = [
     path: 'cities',
     component: ListadoCiudadesComponent
   }, {
+    path: 'cities/new',
+    component: EdicionCiudadComponent
+  },
+  {
     path: 'cities/:id',
     component: EdicionCiudadComponent
   }, {
