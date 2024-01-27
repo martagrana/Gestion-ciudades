@@ -29,21 +29,23 @@ export class EdicionCiudadComponent implements OnInit {
 
   /* método para guardar los registros de las ciudades */
   guardarOActualizarCiudad() {
-    const city = this.formCity.value;
-    const id = this.ciudadSeleccionada ? this.ciudadSeleccionada.$id : null;
-    if (id) {
-      // Si id existe y no es null o undefined, es una actualización
-      this.cityService.update(id, city).subscribe(() => {
-        console.log("Datos editados");
-        this.router.navigate(['cities']);
-      });
+    if (this.formCity.valid) {
+      const city = this.formCity.value;
+      const id = this.ciudadSeleccionada ? this.ciudadSeleccionada.$id : null;
+      if (id) {
+        // Si id existe y no es null o undefined, es una actualización
+        this.cityService.update(id, city).subscribe(() => {
+          console.log("Datos editados");
+          this.router.navigate(['cities']);
+        });
 
-    } else {
-      // Si id es null o undefined, es una creación
-      this.cityService.create(city).subscribe(() => {
-        console.log("Datos guardados");
-        this.router.navigate(['cities']);
-      });
+      } else {
+        // Si id es null o undefined, es una creación
+        this.cityService.create(city).subscribe(() => {
+          console.log("Datos guardados");
+          this.router.navigate(['cities']);
+        });
+      }
     }
   }
 }
