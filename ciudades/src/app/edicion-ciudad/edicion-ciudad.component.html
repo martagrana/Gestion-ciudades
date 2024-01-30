@@ -6,9 +6,9 @@
 
       <div>
         <mat-form-field>
-          <mat-label for="opciones">Selecciona una provincia:</mat-label>
-          <mat-select id="opciones" [(ngModel)]="provinciaSeleccionada">
-            <mat-option *ngFor="let opcion of opciones" [value]="opcion">{{ opcion }}</mat-option>
+          <mat-label for="provincias">Selecciona una provincia:</mat-label>
+          <mat-select id="provincias" formControlName="provinceId">
+            <mat-option *ngFor="let provincia of provincias" [value]="provincia.$id">{{ provincia.name }}</mat-option>
           </mat-select>
         </mat-form-field>
         <!-- <p>Has seleccionado: {{ provinciaSeleccionada }}</p> -->

@@ -19,7 +19,8 @@ export class EdicionCiudadComponent implements OnInit {
 
   formCity: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    zipCode: new FormControl('', [Validators.required, Validators.maxLength(5), Validators.minLength(5)])
+    zipCode: new FormControl('', [Validators.required, Validators.maxLength(5), Validators.minLength(5)]),
+    provinceId: new FormControl('', [Validators.required])
   });
 
   constructor(private cityService: CityService, private provinceService: ProvinceService, private activatedRoute: ActivatedRoute, private router: Router) { }
@@ -29,18 +30,16 @@ export class EdicionCiudadComponent implements OnInit {
       this.ciudadSeleccionada = value;
       this.formCity.patchValue(value)
     })
+    this.cargarProvincias();
   }
 
   /* esta parte es para poder hacer el dropdown */
-  opciones: Province[] = [];
-  provinciaSeleccionada: string = '';
-  seleccionarOpcion(opcion: string): void {
-    this.provinciaSeleccionada = opcion;
-  }
+  provincias: Province[] = [];
+
   cargarProvincias() {
     this.provinceService.query().subscribe((provinces: Province[]) => {
       console.log('provincias vienen desde el servidor', provinces);
-      this.opciones = provinces;
+      this.provincias = provinces;
     })
   }
 
