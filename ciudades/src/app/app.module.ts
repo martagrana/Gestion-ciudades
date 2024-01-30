@@ -18,7 +18,7 @@ import { Route, RouterModule } from '@angular/router';
 import { ListadoProvinciasComponent } from './listado-provincias/listado-provincias.component';
 import { DialogoBorradoProvinciasComponent } from './dialogo-borrado-provincias/dialogo-borrado-provincias.component';
 import { EdicionProvinciasComponent } from './edicion-provincias/edicion-provincias.component';
-
+import { MatSelectModule } from '@angular/material/select';
 
 // Configuracion de las rutas disponibles en la aplicacion
 const routes: Route[] = [
@@ -59,7 +59,9 @@ const routes: Route[] = [
   ],
   imports: [
     RouterModule.forRoot(routes), // Configuration del Router
-    BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule, MatCardModule, MatDialogModule, MatButtonModule, MatIconModule, MatDividerModule, MatInputModule, MatFormFieldModule, BrowserAnimationsModule
+    BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule, MatCardModule,
+    MatDialogModule, MatButtonModule, MatIconModule, MatDividerModule, MatInputModule,
+    MatFormFieldModule, BrowserAnimationsModule, MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

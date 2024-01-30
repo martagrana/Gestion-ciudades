@@ -28,13 +28,6 @@ export class ListadoCiudadesComponent implements OnInit {
       this.ciudades = cities;
     })
   }
-  /**
-   * metodo para guardar una nueva ciudad
-   * 
-   */
-  crearCiudad() {
-
-  }
 
   /** 
    *  método para eliminar los registros según el id de la ciudad

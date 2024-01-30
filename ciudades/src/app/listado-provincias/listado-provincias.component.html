@@ -21,7 +21,7 @@
         <div *ngIf="provincias.length==0">No hay ciudades disponibles en el listado</div>
     </mat-card-content>
     <mat-card-actions class="contenedor-partes">
-        <button mat-stroked-button (click)="cargarProvincias()">REFRESCAR</button>
+        <button mat-stroked-button routerLink="/provinces/new">Crear provincia</button>
     </mat-card-actions>
 
 </mat-card>

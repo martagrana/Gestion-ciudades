@@ -3,6 +3,16 @@
 
   <mat-card-content class="contenedor-partes">
     <div [formGroup]="formCity">
+
+      <div>
+        <mat-form-field>
+          <mat-label for="opciones">Selecciona una provincia:</mat-label>
+          <mat-select id="opciones" [(ngModel)]="provinciaSeleccionada">
+            <mat-option *ngFor="let opcion of opciones" [value]="opcion">{{ opcion }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- <p>Has seleccionado: {{ provinciaSeleccionada }}</p> -->
+      </div>
       <div>
         <mat-form-field>
           <mat-label>Nombre</mat-label><input matInput placeholder="ciudad" formControlName="name">

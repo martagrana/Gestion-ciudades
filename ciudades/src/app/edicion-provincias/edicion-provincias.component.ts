@@ -30,21 +30,23 @@ export class EdicionProvinciasComponent implements OnInit {
   /**
    * método para guardar los registros de las provincias */
   guardarOActualizarProvincia() {
-    const province = this.formProvince.value;
-    const id = this.provinciaSeleccionada ? this.provinciaSeleccionada.$id : null;
-    if (id) {
-      // Si id existe y no es null o undefined, es una actualización
-      this.provinceService.update(id, province).subscribe(() => {
-        console.log("Datos editados");
-        this.router.navigate(['provinces']);
-      });
+    if (this.formProvince.valid) {
+      const province = this.formProvince.value;
+      const id = this.provinciaSeleccionada ? this.provinciaSeleccionada.$id : null;
+      if (id) {
+        // Si id existe y no es null o undefined, es una actualización
+        this.provinceService.update(id, province).subscribe(() => {
+          console.log("Datos editados");
+          this.router.navigate(['provinces']);
+        });
 
-    } else {
-      // Si id es null o undefined, es una creación
-      this.provinceService.create(province).subscribe(() => {
-        console.log("Datos guardados");
-        this.router.navigate(['provinces']);
-      });
+      } else {
+        // Si id es null o undefined, es una creación
+        this.provinceService.create(province).subscribe(() => {
+          console.log("Datos guardados");
+          this.router.navigate(['provinces']);
+        });
+      }
     }
   }
 

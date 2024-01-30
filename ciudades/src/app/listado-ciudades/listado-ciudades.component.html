@@ -5,6 +5,7 @@
       <tr>
         <th>Nombre ciudad</th>
         <th>Codigo Postal</th>
+        <th>Provincia</th>
         <th>Editar</th>
         <th>Eliminar</th>
       </tr>
@@ -13,6 +14,8 @@
           {{ ciudad.name }}
         </td>
         <td>{{ciudad.zipCode}}
+        </td>
+        <td>{{ciudad.province}}
         </td>
         <td> <mat-card-actions class="contenedor-partes">
             <button mat-stroked-button [routerLink]="[ciudad.$id]">Editar</button>
