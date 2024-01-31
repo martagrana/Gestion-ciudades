@@ -20,10 +20,12 @@ export class EdicionCiudadComponent implements OnInit {
   formCity: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     zipCode: new FormControl('', [Validators.required, Validators.maxLength(5), Validators.minLength(5)]),
-    provinceId: new FormControl('', [Validators.required])
+    provinceId: new FormControl('', [Validators.required]),
+    provinceName: new FormControl('')
   });
 
-  constructor(private cityService: CityService, private provinceService: ProvinceService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private cityService: CityService, private provinceService: ProvinceService,
+    private activatedRoute: ActivatedRoute, private router: Router) { }
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params['id'];
     this.cityService.get(id).subscribe(({ value }) => {

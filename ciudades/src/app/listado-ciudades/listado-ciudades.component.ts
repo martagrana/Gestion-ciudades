@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { City } from 'src/model/city.model';
 import { CityService } from 'src/services/city.service';
 import { DialogoBorradoComponent } from '../dialogo-borrado/dialogo-borrado.component';
+import { ProvinceService } from 'src/services/province.service';
+import { Province } from 'src/model/province.model';
 
 @Component({
   selector: 'app-listado-ciudades',
@@ -11,12 +13,38 @@ import { DialogoBorradoComponent } from '../dialogo-borrado/dialogo-borrado.comp
 })
 export class ListadoCiudadesComponent implements OnInit {
   ciudades: City[] = [];
+  provincias: Province[] = [];
   router: any;
   formCity: any;
 
-  constructor(private cityService: CityService, public dialogService: MatDialog) { }
+  constructor(private cityService: CityService, private provinceService: ProvinceService,
+    public dialogService: MatDialog) { }
   ngOnInit(): void {
     this.cargarCiudades();
+    this.cargarProvincias();
+    this.asociarCiudadesConProvincias();
+  }
+
+  /**metodo para asociar el nombre de la provincia a la que pertenece la ciudad */
+  asociarCiudadesConProvincias() {
+    this.ciudades.forEach(ciudad => {
+      let provinciaCorrespondiente: Province | undefined = this.provincias.find(provincia => provincia.$id === ciudad.provinceId);
+      if (provinciaCorrespondiente) {
+        ciudad.provinceName = provinciaCorrespondiente.name;
+      }
+    });
+
+  }
+
+  /** 
+     * método para listar todos los registros de provincias
+      */
+  cargarProvincias() {
+    this.provinceService.query().subscribe((provinces: Province[]) => {
+      console.log('provincias vienen desde el servidor', provinces);
+      this.provincias = provinces;
+      this.asociarCiudadesConProvincias();
+    })
   }
 
   /** 
